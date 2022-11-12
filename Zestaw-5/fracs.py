@@ -33,7 +33,7 @@ def div_frac(frac1, frac2):         # frac1 / frac2
     return mul_frac(frac1,frac2)
 
 def is_positive(frac):              # bool, czy dodatni
-    if frac[0] * frac[1] >= 0: 
+    if frac[0] * frac[1] = 0: 
         return True
     else: 
         return False

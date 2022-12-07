@@ -1,5 +1,5 @@
 # Kamil Nowak, Grupa 2
-# 07.12.2022r.
+# 08.12.2022r.
 # Python 2022/2023
 # stack.py
 
@@ -8,20 +8,26 @@ import unittest
 class Stack:
     def __init__(self, size):
         self.size = size
-        self.stack = []
+        self.items = []
+        
+    def __str__(self):                  # podglądamy stos
+        return str(self.items)
     
     def is_empty(self):
-        return len(self.stack) == 0
+        return not self.items
+    
+    def is_full(self):                  # nigdy nie jest pełny
+        return False
 
-    def push(self, data):
-        if len(self.stack) == self.size:
+    def push(self, item):
+        if len(self.items) == self.size:
             raise OverflowError("Stos jest pełny")
-        self.stack.append(data)
+        self.items.append(item)
 
     def pop(self):
         if self.is_empty():
             raise IndexError("Stos jest pusty")
-        return self.stack.pop()
+        return self.items.pop()
 
 # Testy jednostkowe dla klasy Stack
 class TestStack(unittest.TestCase):

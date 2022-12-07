@@ -1,5 +1,5 @@
 # Kamil Nowak, Grupa 2
-# 07.12.2022r.
+# 08.12.2022r.
 # Python 2022/2023
 # randomqueue.py
 

@@ -35,6 +35,12 @@ else:
 # Zapisuje kto zaczynał gre  
 firstTurn = turn
 
+# Liczba zwyciestw gracza
+playerWins = 0
+
+# Liczba zwyciestw CPU
+cpuWins = 0
+
 # Tablica przechowująca stan gry (puste pole, kółko lub krzyżyk)
 game_state = [['', '', ''], ['', '', ''], ['', '', '']]
 
@@ -150,6 +156,17 @@ while not game_over:
     screen.blit(text, text_rect)
     pygame.display.flip()
     
+    # Tablica wynikow po prawej stronie
+    text = font.render("You: "+str(playerWins), True, orange)
+    fill_rect = pygame.Rect(350, 10, 125, 65)
+    screen.fill(lightblue, fill_rect)
+    text_rect = text.get_rect(center=(425, 25))
+    screen.blit(text, text_rect)
+    text = font.render("Cpu: "+str(cpuWins), True, orange)
+    text_rect = text.get_rect(center=(423, 50))
+    screen.blit(text, text_rect)
+    pygame.display.flip()
+    
     # Sprawdzam czy gra się skończyła, czekam na decyzje gracza o ponownej grze.
     if koniec_gry == 1:
         if take_time == 1:
@@ -260,14 +277,20 @@ while not game_over:
         take_time = 1
         if winner == "O" and firstTurn == "Gracz":
             message = "You win!"
+            playerWins += 1
         elif winner == "X" and firstTurn == "Gracz":
             message = "You lose!"
+            cpuWins += 1
         elif winner == "O" and firstTurn == "CPU":
             message = "You lose!"
+            cpuWins += 1
         elif winner == "X" and firstTurn == "CPU":
             message = "You win!"
+            playerWins += 1
         else:
             message = "Tie!"
+            playerWins += 1
+            cpuWins += 1
         pygame.display.flip()
 
         # Wyswietlamy informacje o zwyciezcy lub remisie.

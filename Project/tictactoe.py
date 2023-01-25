@@ -145,7 +145,7 @@ while not game_over:
     if koniec_gry == 1:
         # Czytamy czas od poczatku gry i czas obecny. Odejmujemy ich roznice od 10, aby otrzymac licznik
         # idący od 10 do 0. Dla 0 -> koniec gry, dla 5 -> zmiana na kolor ostrzegajacy.
-        text = font.render("Try again? "+str(10-(int((new_timer/1000)-(start_timer/1000)))), True, designed_color)
+        text = font.render("Try again? "+str(10-((new_timer//1000)-(start_timer//1000))), True, designed_color)
     elif turn == "Gracz":
         text = font.render("Your turn", True, orange)
     else:
@@ -173,9 +173,9 @@ while not game_over:
             take_time = 0
             start_timer = pygame.time.get_ticks()
         new_timer = pygame.time.get_ticks()
-        if 10-(int((new_timer/1000)-(start_timer/1000))) == 5:
+        if 10-((new_timer//1000)-(start_timer//1000)) == 5:
             designed_color = red
-        elif 10-(int((new_timer/1000)-(start_timer/1000))) == 0:
+        elif 10-((new_timer//1000)-(start_timer//1000)) == 0:
             # Jesli gracz w ciągu 10 sekund nic nie naciśnie, kończymy gre.
             game_over = True
         winner = None
@@ -208,7 +208,7 @@ while not game_over:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # Pobranie pozycji kliknięcia
                 pos = pygame.mouse.get_pos()
-                print(pos)
+                #print(pos)
                 
                 # Zapisujemy ktory rzad i kolumna znajduja sie w miejscu klikniecia gracza
                 if pos[0] > 100 and pos[0] < 200:
@@ -246,7 +246,7 @@ while not game_over:
                     turn = "CPU"
     # Tura komputera, czekamy na zwrot algorytmu Minimax
     elif turn == "CPU":
-        print(game_state)
+        #print(game_state)
         # Czekamy sekunda dla efektu.. Nie jest to konieczne, ale lepiej wygląda
         pygame.time.wait(1000) 
         # Komputer wybiera pole do zaznaczenia za pomocą algorytmu MINMAX
@@ -254,7 +254,7 @@ while not game_over:
         column = bestMove[1]
         row = bestMove[0]
             
-        print(bestMove)
+        #print(bestMove)
         # Rysowanie znaku na ekranie
         if current_sign == "O":
             game_state[row][column] = "O"
@@ -269,7 +269,7 @@ while not game_over:
         pygame.display.flip()
         # Zmiana tury na gracza
         turn = "Gracz"
-        print(game_state) 
+        #print(game_state) 
     # Sprawdzenie wygranej
     winner = check_winner(game_state)
     if winner:

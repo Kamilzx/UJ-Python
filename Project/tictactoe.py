@@ -137,6 +137,8 @@ while not game_over:
     # Rysuje czyja obecna tura, lub czy gracz chce drugą runde.
     font = pygame.font.Font(None, 30) 
     if koniec_gry == 1:
+        # Czytamy czas od poczatku gry i czas obecny. Odejmujemy ich roznice od 10, aby otrzymac licznik
+        # idący od 10 do 0. Dla 0 -> koniec gry, dla 5 -> zmiana na kolor ostrzegajacy.
         text = font.render("Try again? "+str(10-(int((new_timer/1000)-(start_timer/1000)))), True, designed_color)
     elif turn == "Gracz":
         text = font.render("Your turn", True, orange)
